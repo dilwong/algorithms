@@ -16,6 +16,7 @@ class BinaryNode:
         else:
             key = None
         if isinstance(key, BinaryNode):
+            key.__class__ = cls
             return key
         else:
             return super().__new__(cls)
@@ -25,7 +26,8 @@ class BinaryNode:
         self.right = right
         
         self.parent = parent
-        self.key = key
+        if key is not self:
+            self.key = key
         
         self.tree = tree
     
@@ -40,6 +42,10 @@ class BinaryNode:
             return self.parent.right is self
         else:
             return False
+
+    def isRoot(self):
+        parent = self.parent
+        return True if parent is None else False
 
     def height(self):
         """Height of the subtree rooted at this node."""
@@ -245,7 +251,9 @@ class BinaryNode:
     def __str__(self):
         return f'{self:v}'
 
-    def _horizontal_str(self, subtree_strings = [], spine = ''):
+    def _horizontal_str(self, subtree_strings = None, spine = ''):
+        if subtree_strings is None:
+            subtree_strings = []
         if self.parent is None:
             prefix = 'root: '
             addendum = ''

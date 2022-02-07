@@ -45,56 +45,6 @@ def merge_sort(ls: List) -> List:
     return first_list + second_list + new_list
 
 def quicksort_(ls: List, partition_idxs: Optional[Tuple[int, int]] = None, scheme = 'hoare') -> Optional[List]:
-    # if partition_idxs is None:
-    #     nElem = len(ls)
-    #     start = 0
-    #     end = nElem - 1
-    #     if nElem <= 1:
-    #         return ls
-    # else:
-    #     start = partition_idxs[0]
-    #     end = partition_idxs[1]
-    #     nElem = end - start
-    #     if nElem == 0:
-    #         return
-    # if start >= end:
-    #     return
-    # pivot_index = start + nElem // 2
-    # pivot = ls[pivot_index]
-    # forward_index = start
-    # ending_index = max(pivot_index - 1, start)
-    # while forward_index != ending_index:
-    #     if ls[forward_index] > pivot:
-    #         ls[forward_index], ls[ending_index] = ls[ending_index], ls[forward_index]
-    #         ending_index -= 1
-    #     else:
-    #         forward_index += 1
-    # if pivot > ls[forward_index]:
-    #     ls[pivot_index], ls[forward_index + 1] = ls[forward_index + 1], ls[pivot_index]
-    #     pivot_index = forward_index + 1
-    # else:
-    #     ls[pivot_index], ls[forward_index] = ls[forward_index], ls[pivot_index]
-    #     pivot_index = forward_index
-    # backward_index = end
-    # starting_index = min(pivot_index + 1, end)
-    # while starting_index != backward_index:
-    #     if ls[backward_index] < pivot:
-    #         ls[backward_index], ls[starting_index] = ls[starting_index], ls[backward_index]
-    #         starting_index += 1
-    #     else:
-    #         backward_index -= 1
-    # if pivot < ls[starting_index]:
-    #     ls[pivot_index], ls[starting_index - 1] = ls[starting_index - 1], ls[pivot_index]
-    #     pivot_index = starting_index - 1
-    # else:
-    #     ls[pivot_index], ls[starting_index] = ls[starting_index], ls[pivot_index]
-    #     pivot_index = starting_index
-    # quicksort_(ls, (start, pivot_index - 1))
-    # quicksort_(ls, (pivot_index + 1, end))
-    # if partition_idxs is None:
-    #     return ls
-    # else:
-    #     return
     if partition_idxs is None:
         start = 0
         end = len(ls) - 1
