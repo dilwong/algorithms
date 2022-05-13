@@ -146,7 +146,12 @@ class HeapNode(BinaryNode):
             return self
         _swap(self, lastNode)
         self.tree.pop()
-        lastNode.siftDown()
+        if (lastNode.parent is None) or (lastNode.tree.compare(lastNode, lastNode.parent) is lastNode.parent):
+            lastNode.siftDown()
+        elif lastNode.tree.compare(lastNode, lastNode.parent) is lastNode:
+            lastNode.siftUp()
+        else:
+            raise Exception('Unknown exception in HeapNode.delete()')
         return self
 
 
@@ -250,7 +255,7 @@ class Heap(BinaryTree):
         elif type.lower() == 'min':
             self.compare = _min
         else:
-            raise Exception('Unknown comparison type in Heap.__init__')
+            raise Exception(f'Unknown comparison type {type} in Heap.changeType(type)')
         self.type = type
         self.buildHeap(buildHeapFromList)
 
