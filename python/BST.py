@@ -35,7 +35,7 @@ class BinarySearchNode(BinaryNode):
         return current_node
     
     def successor(self):
-        """In the containing binary search tree, find the node with the smallest key larger than (or equal to) that of this node."""
+        """In the containing binary search tree, find the next in-order node."""
         if self.right is not None:
             return self.right.minimum()
         else:
@@ -47,7 +47,7 @@ class BinarySearchNode(BinaryNode):
             return current.parent
 
     def predecessor(self):
-        """In the containing binary search tree, find the node with the largest key smaller than (or equal to) that of this node."""
+        """In the containing binary search tree, find the previous in-order node."""
         if self.left is not None:
             return self.left.maximum()
         else:
@@ -57,6 +57,20 @@ class BinarySearchNode(BinaryNode):
                 if current is None:
                     return
             return current.parent
+
+    def findNext(self):
+        """In the containing binary search tree, find the node with the smallest key larger than (or equal to) that of this node."""
+        prevNode = self.predecessor()
+        if (prevNode is not None) and (prevNode.key == self.key): # Check if previous in-order node has the same value as self.
+            return prevNode
+        return self.successor()
+
+    def findPrevious(self):
+        """In the containing binary search tree, find the node with the largest key smaller than (or equal to) that of this node."""
+        nextNode = self.successor()
+        if (nextNode is not None) and (nextNode.key == self.key): # Check if next in-order node has the same value as self.
+            return nextNode
+        return self.predecessor()
 
     def insert(self, node):
         """Insert node into the subtree rooted at this node. You can violate the BST property by calling this method directly."""

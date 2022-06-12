@@ -7,7 +7,7 @@ if __name__ == "__main__":
         requirements = [line.strip() for line in requirements if line.strip()]
 
     setuptools.setup(name = 'algorithms',
-    version = '1.0.2',
+    version = '1.0.3',
     author = 'Dillon Wong',
     author_email = '',
     description = 'Basic algorithms and data structures',
